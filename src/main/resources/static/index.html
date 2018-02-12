@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Telephone Manipulator</title>
+    <script src="js/lib/angular.min.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
+</head>
+<body ng-app="TMUIController">
+    <div class="container" ng-controller="TMController">
+        <div class="heading">
+            <h1 class="display-4">Telephone Number Manipulator</h1>
+            <p>Enter your telephone number below (with or without an area code) to see all possible variations</p>
+        </div>
+        <div style="border-top: 1px solid #ddd; margin-top: 20px; margin-bottom: 20px;">
+
+        </div>
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <form>
+                    <div class="form-group">
+                        <label>Telephone Number:</label>
+                        <input type="text" ng-model="telephone" class="form-control"/>
+                        <p class="text-danger">{{errMessage}}</p>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit" ng-click="getManipulations()" ng-disabled="!telephone">Scramble</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="my-toolbar" style="margin-top: 20px; margin-bottom: 20px;">
+            <strong>Displaying {{page.start}} to {{page.end}} of {{total}}</strong>
+            <div class="buttons">
+                <button class="btn btn-default" ng-click="getManipulations(page.number - 1)" ng-disabled="page.number == 1">Last</button>
+                <button class="btn btn-default" ng-click="getManipulations(page.number + 1)" ng-disabled="page.number * 100 > total">Next</button>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <th>#</th>
+                <th>Manipulation</th>
+            </thead>
+            <tbody>
+            <tr ng-if="isLoading"><td colspan="2" class="text-center"><img src="/images/loading.gif" width="20"/>Loading...</td></tr>
+
+            <tr ng-if="manipulations.length == 0 && !isLoading"><td colspan="2" class="text-center">No data</td></tr>
+                <tr ng-repeat="man in manipulations">
+                    <td>{{page.start + $index}}</td>
+                    <td>{{man}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="my-toolbar" style="margin-top: 20px; margin-bottom: 20px;">
+            <strong>Displaying {{page.start}} to {{page.end}} of {{total}}</strong>
+            <div class="buttons">
+                <button class="btn btn-default" ng-click="getManipulations(page.number - 1)" ng-disabled="page.number == 1">Last</button>
+                <button class="btn btn-default" ng-click="getManipulations(page.number + 1)" ng-disabled="page.number * 100 > total">Next</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

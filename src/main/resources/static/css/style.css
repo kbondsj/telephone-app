@@ -1,0 +1,9 @@
+.heading{
+    max-width: 700px;
+    text-align:center;
+    margin: 20px auto;
+}
+
+.my-toolbar .buttons{
+    float: right;
+}
