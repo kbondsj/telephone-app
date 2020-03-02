@@ -41,7 +41,7 @@ public class TelephoneManipulateApp {
 
 	private void scrambleTelephone(String telephone, String prefix){
 		/*
-			YOUR LOGIC HERE		
+			YOUR LOGIC HERE
 		*/
 
 	}
