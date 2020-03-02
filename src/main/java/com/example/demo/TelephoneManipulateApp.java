@@ -40,16 +40,10 @@ public class TelephoneManipulateApp {
 	private Set<String> listOfTelephones = new HashSet<>();
 
 	private void scrambleTelephone(String telephone, String prefix){
-		int len = telephone.length();
-		if(prefix.length() == numOfLetters){
-			if(!listOfTelephones.contains(prefix)) {
-				listOfTelephones.add(prefix);
-				totalManipulations++;
-			}
-		}
-		for(int i=0; i < len;i++){
-			scrambleTelephone(telephone.substring(0,i) + telephone.substring(i+1,len), prefix + telephone.charAt(i));
-		}
+		/*
+			YOUR LOGIC HERE		
+		*/
+
 	}
 
 	private ArrayList<String> getPageSet(){
